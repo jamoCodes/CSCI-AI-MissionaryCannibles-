@@ -1,0 +1,4 @@
+﻿  main.cpp
+D:\AI CLASS\CSCI-AI-MissionaryCannibles-\AIActual2.1\AIActual2.1\main.cpp(147,14): warning C4804:  '>': unsafe use of type 'bool' in operation
+D:\AI CLASS\CSCI-AI-MissionaryCannibles-\AIActual2.1\AIActual2.1\main.cpp(258,14): warning C4804:  '>': unsafe use of type 'bool' in operation
+  AIActual2.1.vcxproj -> D:\AI CLASS\CSCI-AI-MissionaryCannibles-\AIActual2.1\Debug\AIActual2.1.exe

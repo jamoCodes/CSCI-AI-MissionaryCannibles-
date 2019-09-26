@@ -416,7 +416,7 @@ vector<mcNode> breadth_first_search_MC()
 {
 	const int theGoal = 0;
 	
-	mcNode start = { 0,-1,-1,0 }; //the start node
+	mcNode start = { 133,-1, 0, 0 }; //the start node
 	queue<mcNode> frontier; //Frontier is a queue for BFS
 	map<int, mcNode> explored; //Explored set implemented as STL map
 	vector<mcNode> solution; //solution implemented as a vector
@@ -426,9 +426,10 @@ vector<mcNode> breadth_first_search_MC()
 		mcNode curr = frontier.front(); frontier.pop(); //take next node from frontier
 		if (explored.find(curr.state) != explored.end())
 			continue;
-		if (curr.state == theGoal)
+		if (curr.state == theGoal) {
+
 			//reached the goal state, return solution
-		{
+
 			while (curr.state != start.state)
 			{
 				solution.push_back(curr); curr = explored[curr.parent];
@@ -446,3 +447,44 @@ vector<mcNode> breadth_first_search_MC()
 	}
 	return solution;
 }
+
+
+
+vector<mcNode> breadth_first_search_MC35()
+{
+	const int theGoal = 0;
+
+	mcNode start = { 155,-1, 0, 0 }; //the start node
+	queue<mcNode> frontier; //Frontier is a queue for BFS
+	map<int, mcNode> explored; //Explored set implemented as STL map
+	vector<mcNode> solution; //solution implemented as a vector
+	frontier.push(start); //initialize the frontier with the start node
+	while (!frontier.empty())
+
+	{
+		mcNode curr = frontier.front(); frontier.pop(); //take next node from frontier
+		if (explored.find(curr.state) != explored.end())
+			continue;
+		if (curr.state == theGoal) {
+
+			//reached the goal state, return solution
+
+			while (curr.state != start.state)
+			{
+				solution.push_back(curr); curr = explored[curr.parent];
+			}
+			solution.push_back(curr);
+			return solution;
+		}
+		explored[curr.state] = curr; //add the current node to the explored set
+		vector<mcNode> children = getSuccesors35(curr); //get the children nodes
+		int n = children.size();
+		for (int i = 0; i < n; i++)
+			//insert the children nodes into frontier if not explored yet
+			if (explored.find(children[i].state) == explored.end())
+				frontier.push(children[i]);
+	}
+	return solution;
+}
+
+
